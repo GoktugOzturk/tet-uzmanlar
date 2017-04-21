@@ -1,0 +1,331 @@
+@charset "UTF-8";
+
+aside nav ul {
+    padding: 20px;
+    background-color: #FFF;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+aside nav li {
+    line-height: 35px;
+    list-style-type: none;
+}
+
+aside nav li > a {
+
+    display: block;
+    color: #000;
+    padding: 0;
+    background: transparent !important;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+aside nav li > a.active,
+aside nav li > a:focus,
+aside nav li > a:hover {
+    text-decoration: none !important;
+    background-color: #1AABE4 !important;
+    color: #FFF;
+    padding-left: 10px;
+}
+
+aside h3 {
+    font-family: "Roboto", serif;
+    line-height: 20px;
+    padding: 20px;
+    font-size: 16px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+article section {
+    padding: 30px;
+    background: #FFF;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.panel-group {
+    margin-bottom: 0;
+}
+
+.section_body {
+
+}
+
+.section_title,
+.pageTitle {
+    margin-top: 0;
+}
+
+.panel-default {
+    border-color: #1AABE4;
+}
+
+.panel-group .panel {
+    border-radius: 0;
+}
+
+.panel-default > .panel-heading a {
+    text-decoration: none !important;
+}
+
+.panel-default > .panel-heading {
+    border-radius: 0;
+    border-color: #1AABE4;
+    background-color: inherit;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.panel-default > .panel-heading.active {
+    background-color: #1AABE4;
+    color: #FFF;
+}
+
+.block {
+    padding: 30px;
+    background-color: #FFF;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.block-title {
+    font-family: "Roboto", serif;
+    line-height: 30px;
+    padding: 20px;
+    font-weight: 100;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+/* giriş için sayfa */
+.loginPage button.facebook {
+    background-color: #3B5998 !important;
+    color: #FFF;
+    border-color: #3B5998;
+    width: 210px;
+    font-weight: 300;
+}
+
+.loginPage button.googleplus {
+    background-color: #DD4B39 !important;
+    color: #FFF;
+    border-color: #DD4B39;
+    width: 210px;
+    font-weight: 300;
+}
+
+.textButton {
+    margin-left: 10px;
+    margin-top: 2px;
+    display: inline-block;
+}
+
+.loginPage {
+    margin-bottom: 100px;
+}
+
+/* kullanıcı ayar sayfaları */
+/*panel ve içerik sayfaları*/
+.contentPageMenu ul a {
+    margin-left: 10px;
+}
+
+.contentPageMenu ul a.active {
+    color: #F06892;
+}
+
+.contentPageMenu ul li {
+    margin-bottom: 8px;
+    list-style: none;
+}
+
+.contentPageMenu .divider {
+    height: 1px;
+    margin: 10px 0;
+    overflow: hidden;
+    background-color: #E5E5E5;
+}
+
+/*sipariş detayları*/
+.contentPage .orderNumber {
+    width: 150px;
+}
+
+.contentPage .orderDate {
+    width: 170px;
+}
+
+.contentPage .orderPrice {
+    width: 110px;
+}
+
+.contentPage .orderStatus {
+}
+
+.contentPage .orderDetails {
+    width: 100px;
+}
+
+.contentPage .orderDetailGeneral {
+    width: 182px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.contentPage table.shipping {
+    margin-bottom: 0;
+}
+
+.contentPage .oneOrder .img {
+    width: 65px;
+}
+
+.contentPage .oneOrder .img img {
+    border: 1px solid #E1E1E1;
+}
+
+.contentPage .oneOrder .link {
+    width: 470px;
+}
+
+.contentPage .oneOrder .link a {
+    max-width: 470px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.contentPage .oneOrder .number {
+    width: 50px;
+    text-align: center;
+}
+
+.contentPage .oneOrder .price {
+    font-weight: 700;
+}
+
+.contentPage .oneOrderView {
+    padding: 10px;
+    border: 1px solid #BBB;
+    margin-bottom: 20px;
+}
+
+.contentPage .oneOrderView .oneOrder {
+    margin-bottom: 0 !important;
+}
+
+.contentPage .prLabelArea {
+    position: relative;
+}
+
+.contentPage .prLabel {
+    position: absolute;
+    display: block;
+    right: 1px;
+    top: 1px;
+    height: 20px;
+    padding: 5px 6px 6px 6px;
+    font-size: 11px;
+}
+
+.contentPage .prLabel .label {
+    padding: .3em .6em .3em;
+}
+
+.modal-content .menRadio {
+    margin-left: 15px;
+}
+
+.contentPage .form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.contentPage .addressInfo .name {
+    max-width: 130px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.contentPage .addressInfo .address2 {
+    max-width: 340px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.contentPage .section_buttons {
+    position: absolute;
+    right: 8px;
+    top: 3px;
+}
+
+.contentPage .sm1Area {
+    width: 72px;
+}
+
+.contentPage .sm3Area {
+    width: 153px;
+}
+
+.media-heading {
+    padding: 0;
+}
+
+@media only screen and (max-width: 767px) {
+    .oneOrderViewMbl h2 {
+        text-indent: 0;
+        margin-left: 0;
+        /*float: left;*/
+        text-align: left;
+    }
+}
+
+.bankAccounts .iban_number {
+    font-weight: bold;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Adresler */
+.box {
+    border: 1px solid #CCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.address-item {
+    height: 250px;
+}
+
+.address-item-content {
+    padding: 10px;
+    text-align: center;
+}
+
+.address-item-content p {
+    height: 165px;
+    overflow-y: auto;
+}
+
+.address-item-new a {
+    padding: 100px 10px 10px;
+    display: block;
+    text-align: center;
+    height: 248px;
+    cursor: pointer;
+}
+
+.address-buttons {
+    position: absolute;
+    bottom: 30px;
+    right: 20px;
+}

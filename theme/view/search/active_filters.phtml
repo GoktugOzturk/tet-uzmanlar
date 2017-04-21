@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var string $clearAllActiveFiltersLink
+ * @var array  $activeFilters
+ */
+?>
+<div class="filter-content filtered block">
+    <ul class="nav">
+        <? foreach ($activeFilters as $activeFilter) { ?>
+            <li><span><?= $activeFilter['title'] ?></span>
+                <a class="remove-filter" href="<?= $activeFilter['clearLink'] ?>"><span class="glyphicon glyphicon-remove"></span></a>
+            </li>
+        <? } ?>
+    </ul>
+    <a href="<?= $clearAllActiveFiltersLink ?>" class="selectedDelete">TÜM SEÇİMİ SİL</a>
+</div>

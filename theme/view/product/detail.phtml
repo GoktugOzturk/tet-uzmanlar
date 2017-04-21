@@ -1,0 +1,402 @@
+<?
+/**
+ * @var ob_product                           $obProduct
+ * @var array                                $productGroupLinks
+ * @var bool                                 $hasVariants
+ * @var array                                $variantProperties
+ * @var array                                $productPhotos
+ * @var string                               $mainProductName
+ * @var int                                  $mainProductId
+ * @var string                               $mainProductUrl
+ * @var string                               $FacebookAppID
+ * @var string                               $TwitterAccount
+ * @var \TeknoETicaret\Object\Product\Rating $rating
+ * @var int                                  $reviewCount
+ * @var bool                                 $hasVisiblePriceCampaign
+ * @var bool                                 $hasAvailableShoppingCheck
+ * @var bool                                 $inStock
+ * @var string                               $productDetails
+ * @var array                                $productHasProperty
+ * @var stdClass                             $reviewData
+ * @var float                                $minInstallmentAmount
+ * @var int                                  $maxInstallmentCount
+ * @var string                               $semanticData
+ * @var array                                $widgets
+ */
+?>
+<? view::show_breadcrumbs() ?>
+<div class="product-page xscenter mb30">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="row">
+            <!-- thumbnails -->
+            <div class="col-md-2 <?= (count($productPhotos) < 7 ? "noCarousel" : "") ?>" id="thumbnailContainer">
+                <a href="javascript:" onclick="thumbnailCarouselPrev()" class="sliderArrow arrowUp"><i class="glyphicon glyphicon-menu-up"></i></a>
+                <div id="thumbnailCarousel">
+                    <? foreach ($productPhotos as $key => $photo) { ?>
+                        <a href="#" class="productThumbImage<?= ($key == 0 ? ' active' : '') ?>" data-image="<?= $photo['normal'] ?>" data-zoom-image="<?= $photo['big'] ?>">
+                            <img id="gallery" width="59" height="59" src="<?= $photo['thumb'] ?>"/> </a>
+                    <? } ?>
+                </div>
+                <a href="javascript:" onclick="thumbnailCarouselNext()" class="sliderArrow arrowDown"><i class="glyphicon glyphicon-menu-down"></i></a>
+            </div>
+            <!-- #thumbnails# -->
+            <div class="col-md-10">
+                <div class="productImages">
+                    <? foreach ($productPhotos as $key => $photo) { ?>
+                        <img id="activeImage" src="<?= $photo['normal'] ?>" data-zoom-image="<?= $photo['big'] ?>"/>
+                        <? break; ?>
+                    <? } ?>
+                    <script>
+                        $(function () {
+                            function initEZPlus() {
+                                while ($('.zoomWrapper #activeImage').length > 0) {
+                                    $('.zoomWrapper #activeImage').unwrap();
+                                }
+                                $('.zoomContainer').remove();
+                                $('.ezp-spinner').remove();
+                                $("#activeImage")
+                                    .removeData('ezPlus')
+                                    .ezPlus({
+                                        gallery: 'thumbnailCarousel',
+                                        galleryActiveClass: 'active',
+                                        imageCrossfade: true,
+                                        loadingIcon: '/assets/elevatezoom-plus/ajax-loader.gif',
+                                        zoomType: "inner",
+                                        borderSize: 0,
+                                        scrollZoom: true
+                                    });
+                            }
+
+                            $(document).on('oasis.resize', initEZPlus);
+                        });
+                    </script>
+                </div><!-- #productImages# -->
+            </div><!-- #col# -->
+        </div><!-- #row# -->
+    </div><!-- #col# -->
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <h1 class="product-title"><?= $mainProductName ?></h1>
+        <div class="shareIcons">
+            <ul class="clearfix">
+                <li class="callToShare">Paylaş:</li>
+                <?= '<li>' . implode('</li><li>', view::getShareIcons($mainProductUrl)) . '</li>' ?>
+            </ul>
+        </div>
+        <div class="productbadges badges">
+            <? if ($obProduct->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+                <div class="badge free-cargo">
+                    <div class="option"><span class="sprite"></span><span class="text">ÜCRETSİZ KARGO</span></div>
+                </div>
+            <? } ?>
+            <? if ($obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                <div class="badge fast-cargo">
+                    <div class="option"><span class="sprite"></span><span
+                                class="text"><?= ($obProduct->warehouse_stock <= 5 ? 'SON ' . $obProduct->warehouse_stock . ' ÜRÜN' : 'HIZLI KARGO') ?></span></div>
+                </div>
+            <? } ?>
+            <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                <div class="badge discount">
+                    <div class="option"><span class="sprite"></span><span class="text">%<?= $obProduct->getDiscountPercent() ?></span></div>
+                </div>
+            <? } ?>
+            <? if ($obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
+                <div class="badge new-product">
+                    <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
+                </div>
+            <? } ?>
+        </div>
+        <div class="star">
+            <div class="productRating" style="cursor: pointer;"></div>
+            &nbsp; <span><?= number_format($rating->getScore(), 1) ?></span>
+            <script type="text/javascript">
+                $(function () {
+                    $('.productRating').raty({
+                        score: <?= $rating->getScore() ?>,
+                        click: function (score) {
+                            $.post('/product/saveRating', {product_id: '<?=$mainProductId ?>', rating_score: score}, function (data) {
+                                if (data.readonly) {
+                                    $('.productRating').raty({readOnly: true, score: <?= $rating->getScore() ?>});
+                                }
+                                if (typeof data.message != "undefined") {
+                                    alert(data.message);
+                                }
+                            });
+                        }
+                    });
+                });
+            </script>
+        </div><!-- #star# -->
+        <div class="clearfix mb15"></div>
+        <? if (count($productGroupLinks)) { ?>
+            <? foreach ($productGroupLinks as $propertyId => $propertyData) { ?>
+                <div class="propertyBox groupProperty">
+                    <label><?= $propertyData['name'] ?></label>
+                    <ul class="nav nav-pills">
+                        <? foreach ($propertyData['options'] AS $optionId => $optionData) { ?>
+                            <li <?= ((isset($propertyData['selectedOption']) && $propertyData['selectedOption'] == $optionData['option_id']) ? 'class="active"' : '') ?>><a
+                                        href="<?= $optionData['url'] ?>"><?= $optionData['name'] ?></a>
+                            </li>
+                        <? } ?>
+                    </ul>
+                </div>
+            <? } ?>
+        <? } ?>
+        <div id="productData">
+            <? if ($hasVariants) { ?>
+                <form role="form" action="<?= $mainProductUrl ?>" method="POST" id="formVariant" data-rel="ajax" data-callback="propertyFormCallback">
+                    <? foreach ($variantProperties as $propertyId => $propertyData) { ?>
+                        <div class="propertyBox variantProperty">
+                            <input type="hidden" name="property[<?= $propertyId ?>]" value="<?= $propertyData['selected'] ?>">
+                            <label><?= $propertyData['name'] ?></label>
+                            <ul class="nav nav-pills">
+                                <? foreach ($propertyData['options'] AS $optionId => $optionData) { ?>
+                                    <li <?= ($propertyData['selected'] == $optionId ? 'class="active"' : '') ?> id="property-<?= $propertyId ?>-<?= $optionId ?>"><a
+                                                href="javascript:" onclick="chooseProperty('<?= $propertyId ?>', '<?= $optionId ?>')"><?= $optionData['name'] ?></a></li>
+                                <? } ?>
+                            </ul>
+                        </div>
+                    <? } ?>
+                </form>
+            <? } ?>
+            <? if ($obProduct->is_saleable) { ?>
+                <? if ($hasVisiblePriceCampaign) { ?>
+                    <div class="detailsArea clearfix">
+                        <? if ($obProduct->hasBadge(ob_product::BADGE_HOT_DEAL)) { ?>
+                            <span class="pull-left campaignText">FIRSAT KAÇMAK ÜZERE
+                                <? if ($obProduct->sale_price > ($obProduct->getSalePrice() * 1.10)) { ?>
+                                    <br><span>Kampanya süresi dolduktan sonra bu ürün <?= icms::format_money($obProduct->sale_price) ?>'dan satışa sunulacaktır.</span>
+                                <? } else { ?>
+                                    <br><span>Fırsatı kaçırmayın!</span>
+                                <? } ?>
+                        </span>
+                        <? } else { ?>
+                            <span class="pull-left campaignText">KAMPANYALI ÜRÜN
+                                <? if ($obProduct->sale_price > ($obProduct->getSalePrice() * 1.10)) { ?>
+                                    <br><span>Kampanya süresi dolduktan sonra bu ürün <?= icms::format_money($obProduct->sale_price) ?>'dan satışa sunulacaktır.</span>
+                                <? } else { ?>
+                                    <br><span>Fırsatı kaçırmayın!</span>
+                                <? } ?>
+                        </span>
+                        <? } ?>
+                        <span class="pull-right campaignTime">00:00:00:00</span>
+                        <script>
+                            $(function () {
+                                $('.campaignTime').countdown(new Date(<?= date('Y, m-1, d, H, i, s', strtotime($obProduct->priceCampaign->end_time)) ?>), countDownFormat);
+                            });
+                        </script>
+                    </div>
+                <? } elseif ($hasAvailableShoppingCheck) { ?>
+                    <div class="detailsArea clearfix text-center">
+                        <span class="campaignText">Alışveriş çekinizi kullanmayı unutmayın</span>
+                    </div>
+                <? } ?>
+                <div class="product-detail">
+                    <? if ($obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                        <div class="old-price"><?= icms::format_money($obProduct->getBasePrice(), null) ?> <span class="tl">TL</span></div>
+                    <? } ?>
+                    <div class="product-price">
+                        <?= icms::format_money($obProduct->getSalePrice(), null) ?><span class="tl"> TL</span>
+                    </div>
+                    <? if ($maxInstallmentCount > 1) { ?>
+                        <div class="product-installment">
+                            <span><?= icms::format_money($minInstallmentAmount) ?>'den</span><br>Başlayan Taksitlerle
+                        </div>
+                    <? } ?>
+                    <? if (!$obProduct->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+                        <div class="shipping-cost">
+                            <span>KARGO ÜCRETİ:</span> <?= icms::format_money($obProduct->getShippingCost()) ?>
+                        </div>
+                    <? } ?>
+                </div>
+                <div class="clearfix">
+                    <div class="product-piece">
+                        <a href="javascript:;" onclick="quantity('#productQuantity','down')">-</a>
+                        <div>
+                            <input name="quantity" id="productQuantity" class="text-center" value="1" type="text" min="1" max="<?= $obProduct->saleableProductCount() ?>"
+                                    onblur="quantity($(this))">
+                            <label for="productQuantity">ADET</label>
+                        </div>
+                        <a href="javascript:;" onclick="quantity('#productQuantity','up')">+</a>
+                    </div>
+                    <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
+                    <input type="hidden" id="variantType" value="<?= $obProduct->variant_type ?>"/>
+                    <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
+                    <a href="javascript:;" class="gotoBasket acc-btn" onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>SEPETE EKLE
+                    </a>
+                </div>
+            <? } else { ?>
+                <? if (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
+                    <div class="product-detail">
+                        <div class="product-price">
+                            <?= icms::format_money($obProduct->getSalePrice(), null) ?><span class="tl"> TL</span>
+                        </div>
+                    </div>
+                <? } ?>
+                <div class="stockAlertBox">
+                    Bu ürün geçici olarak temin edilemiyor.
+                </div>
+                <div class="detailsAreaCart">
+                    <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
+                    <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
+                    <a href="javascript:" class="stockReminder acc-btn" onclick="addStockAlert($('#productId').val())" role="button">
+                        <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Gelince Haber Ver
+                    </a>
+                </div>
+            <? } ?>
+        </div>
+    </div><!-- #col# -->
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+</div><!-- #product-wrapepr# -->
+<div class="product-info mb30">
+    <ul class="nav" role="tablist">
+        <li class="active">
+            <a href="#tabDetails" role="tab" data-toggle="tab">AÇIKLAMALAR</a>
+        </li>
+        <li>
+            <a href="#tabProperties" role="tab" data-toggle="tab">ÜRÜN ÖZELLİKLERİ</a>
+        </li>
+        <li>
+            <a href="#tabComments" role="tab" data-toggle="tab">YORUMLAR
+                <? if ($reviewCount > 0) { ?>
+                    <span class="badge"><?= $reviewCount ?></span>
+                <? } ?>
+            </a>
+        </li>
+        <li>
+            <a href="#tabInstallments" class="showInstallments" role="tab" data-toggle="tab" data-url="/product/get_installment_options/<?= $mainProductId ?>">
+                TAKSİT SEÇENEKLERİ</a>
+        </li>
+        <li>
+            <a href="#tabWarrantyReturn" class="showReturnText" role="tab" data-toggle="tab" data-url="/product/get_return_text">GARANTİ VE İADE</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="tabDetails">
+            <?= $productDetails ?>
+        </div><!-- #tabpanel# -->
+        <div role="tabpanel" class="tab-pane" id="tabProperties">
+            <table class="table table-bordered table-striped mt">
+                <colgroup>
+                    <col class="col-xs-3">
+                    <col class="col-xs-9">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>Özellik</th>
+                    <th>Detayları</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?
+                if ($productHasProperty) {
+                    foreach ($productHasProperty as $row) {
+                        ?>
+                        <tr>
+                            <th><?= $row['key'] ?></th>
+                            <td><?= $row['val'] ?></td>
+                        </tr>
+                        <?
+                    }
+                }
+                if ($obProduct->dimension_width > 0 || $obProduct->dimension_height > 0 || $obProduct->dimension_depth > 0) {
+                    $dimensionArr = [];
+                    if ($obProduct->dimension_width > 0) {
+                        $dimensionArr[] = ' Genişlik: ' . $obProduct->dimension_width . 'cm';
+                    }
+                    if ($obProduct->dimension_height > 0) {
+                        $dimensionArr[] = ' Uzunluk: ' . $obProduct->dimension_height . 'cm';
+                    }
+                    if ($obProduct->dimension_depth > 0) {
+                        $dimensionArr[] = ' Derinlik: ' . $obProduct->dimension_depth . 'cm';
+                    }
+                    ?>
+                    <tr>
+                        <th>Boyutlar</th>
+                        <td><?= (empty($dimensionArr)) ? '' : implode(',', $dimensionArr) ?></td>
+                    </tr>
+                <? } ?>
+                <tr>
+                    <th>SKU Kodu</th>
+                    <td><?= $obProduct->sku_code ?></td>
+                </tr>
+                </tbody>
+            </table>
+        </div><!-- #tabpanel# -->
+        <div role="tabpanel" class="tab-pane" id="tabComments">
+            <?= view::load("product/reviews", ['reviewData' => $reviewData]); ?>
+            <div class="row productAddReview">
+                <? if ($reviewData->myCommentWaiting) { ?>
+                    <div class="col-xs-12">
+                        <h4>YORUMUNUZ ONAY BEKLİYOR</h4>
+                        <span class="commentWaiting">Bu ürüne yazdığınız yorum onay bekliyor. Anlayışınız için teşekkür ederiz.</span>
+                    </div>
+                <? } elseif (session::memberId()) { ?>
+                    <div class="col-xs-6">
+                        <h4>YORUMUNUZU YAZIN</h4>
+                        <form role="form" action="/product/add_comment" method="POST" onsubmit="return checkCommentForm(this)" id="frmComment">
+                            <div class="form-group">
+                                <label for="comments">Ürün Değerlendirmeniz</label>
+                                <div class="personelScore clearfix">
+                                    <div class="rating">
+                                        <div id="commentStar" class="pull-left"></div>
+                                        <span id="ratingHint"></span>
+                                    </div>
+                                    <script>
+                                        $(function () {
+                                            $('#commentStar').raty({
+                                                click: function (score) {
+                                                    $('input[name=comment_rating]').val(score);
+                                                },
+                                                target: '#ratingHint',
+                                                targetKeep: true
+                                            });
+                                        });
+                                    </script>
+                                    <input type="hidden" name="comment_rating" value="0">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="comment_title">Yorum Başlığı</label> <input type="text" id="comment_title" name="comment_title" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="comment_text">Yorumunuz</label> <textarea id="comment_text" name="comment_text" class="form-control" rows="10"></textarea>
+                            </div>
+                            <input type="hidden" name="product" value="<?= $mainProductId ?>"/>
+                            <input type="hidden" name="redirect" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
+                            <button type="submit" class="btn btn-warning mb">Yorumu Gönder</button>
+                        </form>
+                    </div>
+                <? } else { ?>
+                    <div class="col-xs-12 text-center">
+                        <a href="<?= $obProduct->getUrl() . "#tabComments" ?>" class="btn btn-primary mt mb login-required">Yorum yapabilmek için oturum açın</a>
+                    </div>
+                <? } ?>
+            </div>
+        </div>
+        <div class="tab-pane fade mt" id="tabInstallments">Yükleniyor...</div>
+        <div class="tab-pane fade mt" id="tabWarrantyReturn">Yükleniyor...</div>
+    </div><!-- #tab-content# -->
+    <script type="text/javascript">
+        $(function () {
+            var detailImages = $("#tabDetails").find("tr>td>img");
+            if (detailImages && detailImages.length > 0) {
+                $.each(detailImages, function (key, image) {
+                    if ($(image).parent().parent().children("td").length > 1) {
+                        $(image).addClass("halfSize");
+                    }
+                });
+            }
+        });
+    </script>
+</div><!-- #product-info# -->
+<!-- widget -->
+<?= \TeknoETicaret\Widget\Block::addBlock('productUnder',
+    [
+        'productId' => $mainProductId,
+        'categoryId' => $obProduct->category_id,
+        'brandId' => $obProduct->brand_id,
+    ]
+)
+?>

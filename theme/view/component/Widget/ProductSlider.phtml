@@ -1,0 +1,37 @@
+<?
+/**
+ * @var int             $id
+ * @var string          $title
+ * @var \product_item[] $products
+ */
+?>
+<div id="<?= $id ?>" class="filter-products-wrapper mb30">
+    <div class="filter-products-title"><?= $title ?></div>
+    <div class="owl-carousel owl-theme owl-filter-product">
+        <? foreach ($products as $key => $product) { ?>
+            <div class="item">
+                <div class="product-list">
+                    <div class="product-wrapper">
+                        <?= $product->generate() ?>
+                    </div><!-- #product-wrapper# -->
+                </div><!-- #product-list# -->
+            </div><!-- #item# -->
+        <? } ?>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#<?=$id?> .owl-carousel').owlCarousel({
+            responsiveClass: true,
+            nav: true,
+            responsive: {
+                0: {items: 1, nav: false},
+                481: {items: 3},
+                993: {items: 4}
+            },
+            slideSpeed: 300,
+            paginationSpeed: 400,
+            navText: ['<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>', '<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>']
+        });
+    });
+</script>

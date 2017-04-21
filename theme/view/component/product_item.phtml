@@ -1,0 +1,59 @@
+<?
+/**
+ * @var product_item $product
+ */
+?>
+<div class="product productItem" data-id="<?= $product->obProduct->product_id ?>" data-name="<?= htmlspecialchars($product->obProduct->product_name) ?>"
+        data-url="<?= $product->obProduct->getUrl($product->urlParams) ?>">
+    <? if ($product->showName) { ?>
+        <h5 class="name"><?= ($product->hasLink ? '<a href="' . $product->obProduct->getUrl($product->urlParams) . '">' : '') ?>
+            <? if ($product->showBrand) { ?>
+                <span class="brandName"><?= $product->obProduct->brand_name ?></span>
+            <? } ?>
+            <?= $product->obProduct->product_name ?>
+            <?= ($product->hasLink ? '</a>' : '') ?>
+        </h5>
+    <? } ?>
+    <div class="product-image">
+        <?= ($product->hasLink ? '<a href="' . $product->obProduct->getUrl($product->urlParams) . '">' : '')
+        . '<img src="' . $product->obProduct->getPhoto($product->photoSize) . '" />'
+        . ($product->hasLink ? '</a>' : '') ?>
+    </div>
+    <div class="product-meta">
+        <? if ($product->showBasePrice) { ?>
+            <div class="old-price"><?= icms::format_money($product->obProduct->getBasePrice()) ?></div>
+        <? } ?>
+        <div class="price"><?= icms::format_money($product->obProduct->getSalePrice()) ?></div>
+        <a class="addToCart" onclick="addToCart('<?= $product->obProduct->product_id ?>', '1', '<?= $product->from ?>')" href="javascript:"><span
+                    class="glyphicon glyphicon-shopping-cart"></span></a>
+    </div>
+    <div class="badges">
+        <? if ($product->freeShipping && $product->obProduct->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+            <div class="badge free-cargo">
+                <div class="option"><span class="sprite"></span><span class="text">ÜCRETSİZ KARGO</span></div>
+            </div>
+        <? } ?>
+        <? if ($product->fastShipping && $product->obProduct->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+            <div class="badge fast-cargo">
+                <div class="option"><span class="sprite"></span><span class="text">
+                        <? if ($product->limitedStock && $product->obProduct->warehouse_stock <= 5) { ?>
+                            SON <?= $product->obProduct->warehouse_stock ?> ÜRÜN
+                        <? } else { ?>
+                            HIZLI KARGO
+                        <? } ?>
+                    </span>
+                </div>
+            </div>
+        <? } ?>
+        <? if ($product->obProduct->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+            <div class="badge discount">
+                <div class="option"><span class="sprite"></span><span class="text">%<?= $product->obProduct->getDiscountPercent() ?></span></div>
+            </div>
+        <? } ?>
+        <? if ($product->obProduct->hasBadge(ob_product::BADGE_NEW)) { ?>
+            <div class="badge new-product">
+                <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
+            </div>
+        <? } ?>
+    </div>
+</div><!-- #product# -->

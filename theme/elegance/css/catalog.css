@@ -1,0 +1,372 @@
+@charset "UTF-8";
+
+.mb15 {
+    margin-bottom: 15px;
+}
+
+.breadcrumbs {
+    font-size: 13px;
+    color: #838383;
+}
+
+.breadcrumbs div {
+    display: inline-block;
+    font-weight: 400;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.breadcrumbs div a {
+    font-size: 13px;
+    color: #838383;
+    font-weight: 400;
+}
+
+.page-title {
+    margin: 15px 0;
+    font-weight: 100;
+    float: left;
+}
+
+.total-product {
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.block {
+    padding: 20px;
+    background-color: #FFF;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.title-block {
+    line-height: 20px;
+    padding: 20px;
+    font-size: 16px;
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.selectedDelete {
+    background: #CCC;
+    display: block;
+    padding: 15px 10px;
+    font-size: 12px;
+    line-height: 12px;
+    color: #FFF;
+    text-align: center;
+    text-decoration: none !important;
+    margin: 20px -20px -20px -20px;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filtered .remove-filter {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 10px;
+    color: #CCC;
+    cursor: pointer;
+}
+
+.filtered .nav > li > a.remove-filter:hover {
+    color: #C1272D;
+}
+
+.selectedDelete:focus,
+.selectedDelete:hover {
+    background: #1AABE4;
+    color: #FFF;
+}
+
+.filter-content .nav li {
+    line-height: 35px;
+}
+
+.filter-content .nav > li > a {
+    color: #000;
+    padding: 0;
+    background: transparent !important;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-content .nav > li > a:hover {
+    background-color: #1AABE4 !important;
+    color: #FFF;
+    padding-left: 10px;
+}
+
+.filter-content .nav > li > .opener {
+    position: absolute;
+    top: 12px;
+    right: 5px;
+    font-size: 10px;
+    color: #CCC;
+    cursor: pointer;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-content .nav > li > .opener.active {
+    color: #333;
+    -ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+.filter-content .drop-down {
+    padding-left: 20px;
+    max-height: 0;
+    overflow: hidden;
+    -webkit-transition: max-height 0.5s ease-out;
+    transition: max-height 0.5s ease-out;
+}
+
+.filter-content .drop-down li {
+    list-style-type: none;
+}
+
+.filter-content .drop-down li a {
+    color: #000;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.filter-content .drop-down li a:hover,
+.filter-content .drop-down li a:focus,
+.filter-content .drop-down li a.active {
+    color: #1AABE4;
+    text-decoration: none;
+    padding-left: 10px;
+}
+
+.filter-content .drop-down.active {
+    max-height: 500px;
+    -webkit-transition: max-height 0.5s ease-in;
+    transition: max-height 0.5s ease-in;
+}
+
+.filter-content .nav.select li a {
+    text-align: center;
+    display: block;
+    padding: 10px;
+    margin-bottom: 15px;
+    line-height: 14px;
+    border: 2px solid #CCC;
+}
+
+.filter-content .nav.select li a:hover {
+    border: 2px solid #1AABE4;
+}
+
+.filter-content .nav.select li a span {
+    font-size: 12px;
+    color: #CCC;
+}
+
+.filter-content .scrollbar {
+    max-height: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.product-filter-wrapper {
+    padding: 0;
+    margin-bottom: 15px;
+}
+
+.product-filter > li {
+    display: table-cell;
+    width: 1%;
+    position: relative;
+    text-align: center;
+}
+
+.product-filter.nav > li > a {
+    color: #333;
+    padding: 15px;
+    font-size: 12px;
+    background-color: transparent !important;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-filter.nav > li > a:focus,
+.product-filter.nav > li > a:hover,
+.product-filter.nav > li > a.active {
+    color: #FFF;
+    background-color: #1AABE4 !important;
+}
+
+.product-filter.nav > li > a .glyphicon {
+    margin-left: 5px;
+}
+
+.pagination-wrapper {
+    text-align: center;
+}
+
+/* product */
+.product {
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    margin: 15px 0;
+    overflow: hidden;
+    background-color: #F2F2F2;
+}
+
+.product:hover, #categories .product:hover {
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product .name {
+    margin: 0;
+    padding: 15px 10px;
+    position: relative;
+}
+
+.product .name a {
+    text-decoration: none;
+    color: #000;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+
+.product .product-image {
+    -webkit-box-shadow: -4px 2px 5px -2px rgba(0, 0, 0, 0.16), -4px 2px 10px -3px rgba(0, 0, 0, 0.12);
+    box-shadow: -4px 2px 5px -2px rgba(0, 0, 0, 0.16), -4px 2px 10px -3px rgba(0, 0, 0, 0.12);
+}
+
+.product img {
+    width: 100%;
+}
+
+.product .product-meta {
+    margin: 0;
+    height: 55px;
+    padding: 10px 10px;
+    position: relative;
+}
+
+.product .product-meta:after {
+    content: " ";
+    clear: both;
+}
+
+.product .product-meta .price {
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.product .product-meta .old-price {
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: line-through;
+    color: #888;
+    line-height: 12px;
+    margin-bottom: -5px;
+}
+
+.product .product-meta .addToCart {
+    text-decoration: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px;
+    background-color: #09A6D7;
+    color: #FFF;
+    font-weight: 700;
+    -webkit-transition: all 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 55px;
+}
+
+.product .product-meta .addToCart:hover {
+    padding: 15px 17px;
+    font-size: 20px;
+}
+
+#filtreler-btn {
+    display: none;
+}
+
+/* #product# */
+@media only screen and (max-width: 992px) {
+    #filtreler-btn {
+        display: block;
+        padding: 20px;
+        background: #09A6D7;
+        color: #FFF;
+        margin-left: 15px;
+        float: right;
+    }
+
+    .title-block {
+        padding: 20px 0;
+    }
+
+    .block {
+        padding: 10px;
+    }
+
+    .selectedDelete {
+        margin: 0;
+    }
+
+    .filter-content .opener {
+        display: none;
+    }
+
+    .filter-content .nav li {
+        line-height: normal;
+    }
+
+    .filter-content .nav > li > a {
+        margin-top: 5px;
+        line-height: 35px;
+    }
+
+    .filter-content .mm-listview > li:not(.mm-divider):after {
+        left: 0;
+    }
+
+    .filter-content .mm-listview > li > a, .filter-content .mm-listview > li > span {
+        padding: 10px 0;
+    }
+
+    .filter-content .select.nav li {
+        padding: 0 15px;
+    }
+
+    .filtered .remove-filter {
+        line-height: normal !important;
+        top: 0 !important;
+        margin-top: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .product-filter > li {
+        display: block;
+        width: 100%;
+    }
+}

@@ -1,0 +1,78 @@
+<?
+/**
+ * @var string           $themeDir
+ * @var category_model[] $catalogs
+ * @var category_model   $category
+ */
+?>
+<header class="mb30">
+    <div id="mobile-menu-buttons">
+        <nav>
+            <ul class="nav nav-pills">
+                <li><a href="#main-menu"><span class="glyphicon glyphicon-menu-hamburger"></span>Menü</a></li>
+                <li><a href="#user-menu"><span class="glyphicon glyphicon-user"></span>Hesabım</a></li>
+                <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span>Sepet</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 col-sm-12 col-xs-12 text-center">
+                <a href="/" id="logo"><img alt="<?= \TeknoETicaret\Config\Settings::get('site.name') ?>" src="<?= view::getLogo('logo') ?>"
+                            srcset="<?= view::getLogo('logo') ?> 1x, <?= view::getLogo('logo2x') ?> 2x"/></a>
+            </div>
+            <div id="toolbar" class="static col-md-10 col-xs-12">
+                <div class="row">
+                    <div id="user-menu-wrapper" class="static col-md-12">
+                        <nav id="user-menu">
+                            <ul class="nav">
+                                <? if (session::isMember()) { ?>
+                                    <li class="dropdown"><a role="button" class="dropdown-toggle" href="javascript:" data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">Hesabım [<?= mb_strtoupper(session::get("firstName")) ?>] <span class="caret"></span> </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/account/details"><i class="glyphicon glyphicon-user"></i> Kişisel Bilgilerim</a></li>
+                                            <li><a href="/account/addresses"><i class="glyphicon glyphicon-list-alt"></i> Adreslerim</a></li>
+                                            <li><a href="/account/shopping_checks"><i class="glyphicon glyphicon-tag"></i> Alışveriş Çeklerim</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/siparis-takip"><i class="glyphicon glyphicon-ok"></i> Siparişlerim</a></li>
+                                            <li><a href="/order/defectreturn"><i class="glyphicon glyphicon-refresh"></i> Arıza/İade Bildirimi</a></li>
+                                            <li><a href="/support/tickets"><i class="glyphicon glyphicon-comment"></i> Destek Taleplerim</a></li>
+                                            <li><a href="/support/request"><i class="glyphicon glyphicon-plus-sign"></i> Yeni Talep Oluştur</a></li>
+                                            <li role="separator" class="divider"></li>
+                                            <li><a href="/member/logout"><i class="glyphicon glyphicon-send"></i> Çıkış Yap</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a role="button" href="/siparis-takip">SİPARİŞ TAKİP</a></li>
+                                    <li><a role="button" href="/iletisim">İLETİŞİM</a></li>
+                                <? } else { ?>
+                                    <li><a role="button" class="signup-required" href="javascript:">ÜYE OL</a></li>
+                                    <li><a role="button" class="login-required" href="javascript:">GİRİŞ YAP</a></li>
+                                    <li><a role="button" class="login-required" href="/siparis-takip">SİPARİŞ TAKİP</a></li>
+                                    <li><a role="button" href="/iletisim">İLETİŞİM</a></li>
+                                <? } ?>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-md-9 col-sm-12 col-xs-12">
+                        <form id="search" action="/ara">
+                            <input type="text" name="q" placeholder="Aradığınız ürünü yazın..." id="searchQuery" class="form-control" autocomplete="on">
+                            <a href="javascript:;" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></a>
+                        </form>
+                    </div><!-- #col# -->
+                    <div id="cart" class="col-md-3 col-sm-4 col-xs-3">
+                        <ul class="nav pull-right">
+                            <li class="cart">
+                                <a class="acc-btn" href="/cart">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>SEPETİM
+                                    <span class="badge cartItems pull-right"><?= session::getCartProductCount() ?></span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div><!-- #col# -->
+                </div><!-- #row# -->
+            </div><!-- #col# -->
+        </div><!-- #row# -->
+    </div><!-- #container# -->
+    <?= menu::generateSiteHeaderMenu() ?>
+</header>

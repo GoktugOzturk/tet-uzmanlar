@@ -1,0 +1,113 @@
+{
+  "theme_tag": "uzmanlar",
+  "theme_name": "Uzmanlar",
+  "theme_version": "1.0.0",
+  "compatible_with": "1.0.1",
+  "config": {
+    "skeletonView": {
+      "default": "global",
+      "cart": "checkout",
+      "checkout": "checkout"
+    },
+    "advertisementZones": {
+      "HomePageSlider": {
+        "description": "Anasayfa Kayan Slider",
+        "group": "Home",
+        "type": "Banner",
+        "width": 848,
+	"height": 408,
+        "limit": 10,
+        "sort_by": "Order"
+      },
+      "HomePageLeftDouble": {
+        "description": "Anasayfada soldaki alt alta iki banner",
+        "group": "Home",
+        "type": "Banner",
+        "width": 263,
+        "height": 130,
+        "limit": 3,
+        "sort_by": "Order"
+      },
+      "HomePageCenterSquare": {
+        "description": "Anasayfada ortadaki kare banner",
+        "group": "Home",
+        "type": "Banner",
+        "width": 263,
+        "height": 275,
+        "limit": 1,
+        "sort_by": "Random"
+      },
+      "HomePageRightRectangle": {
+        "description": "Anasayfada sağdaki dikdörtgen banner",
+        "group": "Home",
+        "type": "Banner",
+        "width": 555,
+        "height": 275,
+        "limit": 1,
+        "sort_by": "Random"
+      },
+      "CategoryTop": {
+        "description": "Kategori sayfalarında menüden sonra görünen banner",
+        "group": "Category",
+        "type": "Banner",
+        "width": 1140,
+        "limit": 3,
+        "sort_by": "Order"
+      }
+    },
+    "blockZones": {
+      "footer": {
+        "page": "All",
+        "title": "Footer Alanı",
+        "description": "Bu alan site genelinde tüm sayfaların altında görünür"
+      },
+      "homePage": {
+        "page": "Home",
+        "title": "Ana Sayfa",
+        "description": "Bu alan anasayfa tasarımını özelleştirmenizi sağlar"
+      },
+      "productUnder": {
+        "page": "Product",
+        "title": "Ürün Detay Sayfası",
+        "description": "Ürün detay sayfalarında ürün açıklamalarının altındaki alanda görünecek öğelerin özelleştirilmesini sağlar"
+      },
+      "categoryTop": {
+        "page": "Category",
+        "title": "Kategori Sayfası Navigasyon Altı",
+        "description": "Kategori sayfalarında navigasyon altına eklenecek banner, açıklama gibi öğelerin özelleştirilmesini sağlar"
+      }
+    },
+    "productPhoto": {
+      "ratio": 1,
+      "width": {
+        "thumb": 66,
+        "widget": 263,
+        "catalog": 263,
+        "normal": 445,
+        "mail": 300
+      }
+    },
+    "logos": {
+      "logo": {
+        "name": "Genel Site Logosu",
+        "width": 150,
+        "height": 140
+      },
+      "logo2x": {
+        "name": "Genel Site Logosu (2x)",
+        "width": 300,
+        "height": 280
+      },
+      "fixedNav": {
+        "name": "Sabit Navigasyonda Görünen Logo",
+        "width": 150,
+        "height": 49
+      },
+      "fixedNav2x": {
+        "name": "Sabit Navigasyonda Görünen Logo (2x)",
+        "width": 300,
+        "height": 98
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<footer>
+    <div class="footer-main">
+        <!--googleoff: index-->
+        <div id="privileges" class="container mb30">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="privilege">
+                        <span class="sprite ssl"></span> SSL Desteği ile Güvenli Ödeme
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="privilege">
+                        <span class="sprite return"></span> Ücretsiz İade ve Değişim
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="privilege">
+                        <span class="sprite cargo"></span> 200TL Üzeri Ücretsiz Kargo
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--googleon: index-->
+        <div class="payment-options-wrapper">
+            <div class="payment-options"></div>
+        </div>
+        <div class="footer-lists">
+            <div class="container">
+                <?= \TeknoETicaret\Widget\Block::addBlock('footer') ?>
+            </div>
+        </div><!-- #footer-lists# -->
+    </div><!-- #footer-mains# -->
+    <div class="copyright">
+        <p>Copyright <?= \TeknoETicaret\Config\Settings::get('site.name') ?> © 2016 - Tüm hakları saklıdır. </p>
+    </div><!-- #copyright# -->
+    <div id="teknomavi">
+        <p>Bu site <a href="https://www.teknoeticaret.com" target="_blank">Tekno E-Ticaret</a> altyapısı ile hizmet veriyor.</p>
+    </div>
+</footer>
+<?= view::getSemanticData() ?>
+<?= view::load_scripts() ?>
+<?
+if (!defined("DISABLE_TRACKERS")) {
+    echo view::load("tracker/global_tracker");
+}
+?>

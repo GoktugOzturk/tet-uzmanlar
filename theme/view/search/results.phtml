@@ -1,0 +1,186 @@
+<?
+/**
+ * @var string       $activeFiltersHtml
+ * @var string       $facetHtml
+ * @var string       $descriptionBlock
+ * @var ob_category  $category
+ * @var ob_brand     $brand
+ * @var string       $searchListTitle
+ * @var array        $sortLinks
+ * @var int          $numFound
+ * @var ob_product[] $products
+ * @var string       $paginationUrl
+ * @var int          $totalPage
+ * @var int          $currentPage
+ * @var string       $qs
+ */
+?>
+<!-- #breadcrumbs# -->
+<?= view::show_breadcrumbs() ?>
+<!-- #breadcrumbs# -->
+<div class="row">
+    <? if (!isset($qs) && isset($category)) { ?>
+        <div class="col-xs-12" id="categoryBanner">
+            <?= \TeknoETicaret\Widget\Block::addBlock('categoryTop', ['categoryId' => $category->category_id]) ?>
+        </div>
+    <? } ?>
+    <div class="col-md-3 col-xs-12" id="filtreler">
+        <div class="filtreler">
+            <?= $activeFiltersHtml ?>
+            <?= $facetHtml ?>
+        </div>
+    </div>
+    <!-- #filtreler -->
+    <div class="col-md-9 col-xs-12" id="productList">
+        <h1 class="page-title">
+            <? if (isset($qs)) {
+                if (!empty($qs)) {
+                    echo '"' . $qs . '" Arama Sonuçları';
+                } elseif (isset($isJustNew)) {
+                    echo 'En Yeni Ürünler';
+                } else {
+                    echo 'Arama Sonuçları';
+                }
+            } elseif (isset($category)) {
+                echo $category->category_name;
+            } elseif (isset($brand)) {
+                echo $searchListTitle;
+            } ?>
+        </h1>
+        <div class="total-product"><?= $numFound ?> Ürün bulundu</div>
+        <a id="filtreler-btn" href="#filtreler">Filtrele</a>
+        <div class="clearfix"></div>
+        <? if (!isset($hideListTitle) || !$hideListTitle) { ?>
+            <div class="block product-filter-wrapper">
+                <ul class="nav product-filter">
+                    <?
+                    if (isset($baseUrl)) {
+                        $url = parse_url($baseUrl);
+                    } else {
+                        $url = ['path' => "/ara"];
+                    }
+                    foreach ($sortLinks as $sortLink) {
+                        if (isset($sortLink['orderType'])) {
+                            $sortLink['linkQuery']["orderType"] = $sortLink['orderType'];
+                        }
+                        $url['query'] = $sortLink['linkQuery'];
+                        $sortLink['title'] = str_replace('(Artan)', '<span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>', $sortLink['title']);
+                        $sortLink['title'] = str_replace('(Azalan)', '<span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>', $sortLink['title']);
+                        ?>
+                        <li><a href="<?= icms::build_url($url) ?>"
+                                    class="<?= $sortLink['isActive'] ? 'active' : '' ?> <?= $sortLink['class'] ?>"><?= $sortLink['title'] ?></a></li>
+                    <? } ?>
+                </ul><!-- #productFilter# -->
+            </div><!-- #block# -->
+        <? } ?>
+        <? if (isset($products) && is_array($products) && count($products) > 0) { ?>
+            <div class="products row">
+                <? foreach ($products as $key => $product) { ?>
+                    <div class="product-wrapper col-md-4 col-sm-6 col-xs-12">
+                        <div class="product <? (!$product->is_saleable ? "passiveProduct" : "") ?>">
+                            <h5 class="name"><a href="<?= $product->getUrl() ?>"><?= $product->full_name ?></a></h5>
+                            <div class="product-image">
+                                <a href="<?= $product->getUrl() ?>"><img src="<?= $product->getPhoto("catalog") ?>"></a>
+                            </div>
+                            <div class="product-meta">
+                                <? if ($product->is_saleable) { ?>
+                                    <? if ($product->getSalePrice() < $product->getBasePrice()) { ?>
+                                        <span class="old-price"><?= icms::format_money($product->getBasePrice()) ?></span>
+                                    <? } ?>
+                                    <span class="price"><?= icms::format_money($product->getSalePrice()) ?></span>
+                                    <a href="javascript:" onclick="addToCart('<?= $product->product_id ?>', '1', '')" class="addToCart"><span
+                                                class="glyphicon glyphicon-shopping-cart"></span></a>
+                                <? } elseif (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
+                                    <span class="price"><?= icms::format_money($product->getSalePrice()) ?></span>
+                                <? } ?>
+                            </div>
+                            <div class="badges">
+                                <? if ($product->hasBadge(ob_product::BADGE_FREE_SHIPPING)) { ?>
+                                    <div class="badge free-cargo">
+                                        <div class="option"><span class="sprite"></span><span class="text">ÜCRETSİZ KARGO</span></div>
+                                    </div>
+                                <? } ?>
+                                <? if ($product->hasBadge(ob_product::BADGE_FAST_CARGO)) { ?>
+                                    <div class="badge fast-cargo">
+                                        <div class="option"><span class="sprite"></span><span class="text">HIZLI KARGO</span></div>
+                                    </div>
+                                <? } ?>
+                                <? if ($product->hasBadge(ob_product::BADGE_DISCOUNT)) { ?>
+                                    <div class="badge discount">
+                                        <div class="option"><span class="sprite"></span><span class="text">%<?= $product->getDiscountPercent() ?></span></div>
+                                    </div>
+                                <? } ?>
+                                <? if ($product->hasBadge(ob_product::BADGE_NEW)) { ?>
+                                    <div class="badge new-product">
+                                        <div class="option"><span class="sprite"></span><span class="text">YENİ ÜRÜN</span></div>
+                                    </div>
+                                <? } ?>
+                            </div>
+                        </div><!-- #product# -->
+                    </div><!-- #product-wrapper# -->
+                <? } ?>
+            </div><!-- products -->
+        <? } ?>
+    </div>
+    <!-- #productList -->
+    <? if (isset($paginationUrl) && $paginationUrl && $totalPage > 1) { ?>
+        <div class="col-xs-12 col-md-9 col-md-offset-3">
+            <nav class="pagination-wrapper">
+                <?= pagination::renderPagination($currentPage, $totalPage, $paginationUrl) ?>
+            </nav>
+        </div>
+    <? } ?>
+    <!-- Bunu mu demek istediniz. Başlangıç -->
+    <? if (isset($spellCheck) && $spellCheck) { ?>
+        <div class="didYouMean mt mb">
+            <? $fixedQuery = str_replace('\-', '-', $spellCheck['fixedQuery']); ?>
+            <span style="color: #c11616;font-size: 18px">Bunu mu demek istediniz?</span>
+            <a href="/ara?q=<?= urlencode($fixedQuery) ?>&wq=<?= $qs ?>" style="color:#004b94;font-size: 18px;text-decoration: underline;"><?= $fixedQuery ?></a>
+        </div>
+    <? } ?>
+    <!-- Bunu mu demek istediniz. Bitiş -->
+    <? if (isset($otherKeywords) && $otherKeywords) { ?>
+        <div class="suggestedKeywords">
+            <div class="suggestedTitle">
+                <? if ($qs) { ?> <strong><?= $qs ?></strong> ile <? } ?> ilgili aramalar
+            </div>
+            <? $searchKeywords = explode(' ', $qs); ?>
+            <div class="keywordBlock">
+                <? foreach ($otherKeywords as $keyword) { ?>
+                    <div class="col-xs-3">
+                        <a href="/ara?q=<?= urlencode($keyword) ?>&sq=<?= $qs ?>"><?= icms::highlightWords($keyword, $searchKeywords) ?></a>
+                    </div>
+                <? } ?>
+            </div>
+        </div>
+    <? } ?>
+    <div class="row">
+        <div class="col-xs-content fr">
+            <? if (isset($promoteSubCategories) && !empty($promoteSubCategories)) { ?>
+                <div class="row mt catPopulerCategory">
+                    <div class="col-xs-12">
+                        <h2>Popüler Kategoriler</h2>
+                        <div class="row mt">
+                            <? foreach ($promoteSubCategories as $promoteItems) { ?>
+                                <div class="col-xs-3">
+                                    <a href="<?= $promoteItems['link'] ?>"><img src="<?= image::get_category($promoteItems['key']) ?>" width="190" alt=""/></a>
+                                    <h3><?= $promoteItems['title'] ?></h3>
+                                    <? if (isset($promoteItems['brands']) && !empty($promoteItems['brands'])) { ?>
+                                        <ul>
+                                            <? foreach ($promoteItems['brands'] as $brand) { ?>
+                                                <li><a href="<?= $brand['brand_link'] ?>"><?= $brand['brand_name'] ?></a></li>
+                                            <? } ?>
+                                        </ul>
+                                    <? } ?>
+                                </div>
+                            <? } ?>
+                        </div>
+                    </div>
+                </div>
+            <? } ?>
+            <!-- catPopulerCategory sonu -->
+        </div>
+        <!-- kategori içerik sonu -->
+    </div>
+</div><!-- #row# -->
+<?= (isset($descriptionBlock) ? $descriptionBlock : '') ?>
