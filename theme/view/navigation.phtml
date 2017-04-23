@@ -11,38 +11,41 @@
                 <div class="static col-md-12">
                     <a href="/"><img class="nav-logo pull-left" src="<?= view::getLogo('fixedNav') ?>"
                                      srcset="<?= view::getLogo('fixedNav') ?> 1x, <?= view::getLogo('fixedNav2x') ?> 2x"></a>
-                    <nav id="main-menu" class="navbar col-md-3">
-                        <a class="drop-down-title">ÜRÜN GRUPLARI</a>
-                        <ul class="nav navbar-nav">
-                            <? if (count($catalogs)) { ?>
-                                <? foreach ($catalogs as $catalog) { ?>
-                                    <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
-                                        <li class="dropdown-opener">
-                                            <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?> <span
-                                                    class="glyphicon glyphicon-chevron-right"></span></a>
-                                            <ul class="dropdown-menu">
-                                                <? foreach ($childCategories[$catalog['id']] as $category) { ?>
-                                                    <li><a href="<?= $category['link'] ?>"><?= $category['name'] ?></a>
-                                                    </li>
-                                                <? } ?>
-                                            </ul>
-                                        </li>
-                                    <? } else { ?>
-                                        <li>
-                                            <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
-                                        </li>
+                    <div class="main-menu-wrapper col-md-3">
+                        <nav id="main-menu" class="navbar">
+                            <a class="drop-down-title">ÜRÜN GRUPLARI</a>
+                            <ul class="nav navbar-nav">
+                                <? if (count($catalogs)) { ?>
+                                    <? foreach ($catalogs as $catalog) { ?>
+                                        <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
+                                            <li class="dropdown-opener">
+                                                <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?> <span
+                                                        class="glyphicon glyphicon-chevron-right"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <? foreach ($childCategories[$catalog['id']] as $category) { ?>
+                                                        <li>
+                                                            <a href="<?= $category['link'] ?>"><?= $category['name'] ?></a>
+                                                        </li>
+                                                    <? } ?>
+                                                </ul>
+                                            </li>
+                                        <? } else { ?>
+                                            <li>
+                                                <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
+                                            </li>
+                                        <? } ?>
                                     <? } ?>
                                 <? } ?>
-                            <? } ?>
-                            <li class="cart pull-right">
-                                <a class="acc-btn" href="/cart">
-                                    <span class="glyphicon glyphicon-shopping-cart"></span>SEPETİM
-                                    <span
-                                        class="badge cartItems pull-right"><?= session::getCartProductCount() ?></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                            </ul>
+                        </nav>
+                    </div>
+                    <li class="cart pull-right">
+                        <a class="acc-btn" href="/cart">
+                            <span class="glyphicon glyphicon-shopping-cart"></span>SEPETİM
+                            <span
+                                class="badge cartItems pull-right"><?= session::getCartProductCount() ?></span>
+                        </a>
+                    </li>
                 </div><!--#col#-->
             </div><!-- #row# -->
         </div><!-- #container# -->
