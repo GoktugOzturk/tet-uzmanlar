@@ -19,6 +19,7 @@ $(function () {
             if ($(window).innerWidth() > 767) {
                 navbar.find('.acc-btn').addClass('active');
                 navbar.find('.nav-logo').addClass('active');
+                navbar.find('#main-menu').removeClass('active');
             }
         } else {
             navbar.removeClass('navbar-fixed-top');
