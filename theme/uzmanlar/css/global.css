@@ -292,7 +292,7 @@ body {
 }
 
 #main-menu:hover .navbar-nav,
-#main-menu:focus .navbar-nav{
+#main-menu:focus .navbar-nav {
     display: block;
 }
 
@@ -332,6 +332,14 @@ li.cart .acc-btn {
     -moz-transform: scale(1.5);
     -ms-transform: scale(1.5);
     -o-transform: scale(1.5);
+}
+
+.toggle {
+    display: none;
+}
+
+.toggle.navbar-fixed-top {
+    display: block;
 }
 
 /* #Navigation# */

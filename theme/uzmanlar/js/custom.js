@@ -9,9 +9,11 @@ function initMobileMenu() {
 }
 $(function () {
     /* fixed Navbar */
-    navbar = $("#header-nav-bar");
+    defaultNavbar = $("#header-nav-bar");
+    navbard = $("#header-nav-bar").clone().addClass("toggle").insertBefore("#bodyWrapper");
+    navbar = $(document).find(".toggle");
     if (navbar.length > 0) {
-        navbaroffset = navbar.offset().top;
+        navbaroffset = defaultNavbar.offset().top;
     }
     $(window).on('scroll resize', function () {
         if ($(window).scrollTop() > navbaroffset) {
@@ -48,3 +50,6 @@ $(function () {
         }
     });
 });
+
+
+
