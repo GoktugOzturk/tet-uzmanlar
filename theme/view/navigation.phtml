@@ -11,8 +11,8 @@
                 <div class="static col-md-12">
                     <a href="/"><img class="nav-logo pull-left" src="<?= view::getLogo('fixedNav') ?>"
                                      srcset="<?= view::getLogo('fixedNav') ?> 1x, <?= view::getLogo('fixedNav2x') ?> 2x"></a>
-                    <a>ÜRÜN GRUPLARI</a>
-                    <nav id="main-menu" class="navbar">
+                    <nav id="main-menu" class="navbar col-md-3">
+                        <a class="drop-down-title">ÜRÜN GRUPLARI</a>
                         <ul class="nav navbar-nav">
                             <? if (count($catalogs)) { ?>
                                 <? foreach ($catalogs as $catalog) { ?>
