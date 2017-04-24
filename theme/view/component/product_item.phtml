@@ -5,6 +5,11 @@
 ?>
 <div class="product productItem" data-id="<?= $product->obProduct->product_id ?>" data-name="<?= htmlspecialchars($product->obProduct->product_name) ?>"
         data-url="<?= $product->obProduct->getUrl($product->urlParams) ?>">
+    <div class="product-image">
+        <?= ($product->hasLink ? '<a href="' . $product->obProduct->getUrl($product->urlParams) . '">' : '')
+        . '<img src="' . $product->obProduct->getPhoto($product->photoSize) . '" />'
+        . ($product->hasLink ? '</a>' : '') ?>
+    </div>
     <? if ($product->showName) { ?>
         <h5 class="name"><?= ($product->hasLink ? '<a href="' . $product->obProduct->getUrl($product->urlParams) . '">' : '') ?>
             <? if ($product->showBrand) { ?>
@@ -14,11 +19,6 @@
             <?= ($product->hasLink ? '</a>' : '') ?>
         </h5>
     <? } ?>
-    <div class="product-image">
-        <?= ($product->hasLink ? '<a href="' . $product->obProduct->getUrl($product->urlParams) . '">' : '')
-        . '<img src="' . $product->obProduct->getPhoto($product->photoSize) . '" />'
-        . ($product->hasLink ? '</a>' : '') ?>
-    </div>
     <div class="product-meta">
         <? if ($product->showBasePrice) { ?>
             <div class="old-price"><?= icms::format_money($product->obProduct->getBasePrice()) ?></div>
