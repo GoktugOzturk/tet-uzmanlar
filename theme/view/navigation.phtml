@@ -18,7 +18,7 @@
                                         <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
                                             <li class="dropdown-opener">
                                                 <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?> <span
-                                                        class="glyphicon glyphicon-chevron-right"></span></a>
+                                                            class="glyphicon glyphicon-chevron-right"></span></a>
                                                 <ul class="dropdown-menu">
                                                     <? foreach ($childCategories[$catalog['id']] as $category) { ?>
                                                         <li>
@@ -37,11 +37,18 @@
                             </ul>
                         </nav>
                     </div>
+                    <nav id="second-menu">
+                        <ul>
+                            <li><a href="#">İndirimli Ürünler</a></li>
+                            <li><a href="#">En Yeni Ürünler</a></li>
+                            <li><a href="#">Outlet</a></li>
+                        </ul>
+                    </nav>
                     <li class="cart pull-right">
                         <a class="acc-btn" href="/cart">
                             <span class="glyphicon glyphicon-shopping-cart"></span>SEPETİM
                             <span
-                                class="badge cartItems pull-right"><?= session::getCartProductCount() ?></span>
+                                    class="badge cartItems pull-right"><?= session::getCartProductCount() ?></span>
                         </a>
                     </li>
                 </div><!--#col#-->
