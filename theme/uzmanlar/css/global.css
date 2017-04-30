@@ -53,6 +53,7 @@ body {
 
 #nav-container {
     min-height: 70px;
+    margin-top: 30px;
 }
 
 /* nav-black-blue */
@@ -206,6 +207,10 @@ body {
     display: block;
 }
 
+#toolbar-wrapper {
+    border-bottom: 1px solid #dedede;
+}
+
 /*
 #header-nav-bar .navbar li > a:after {
     content: "";
@@ -354,21 +359,24 @@ header {
     margin-bottom: 15px;
 }
 
-#user-menu-wrapper {
-    margin-bottom: 15px;
-    float: right;
-}
-
-#user-menu-wrapper #user-menu {
-    float: right;
-}
-
-#user-menu-wrapper #user-menu > ul > li {
+#user-menu-wrapper .user-menu > ul > li {
     float: left;
 }
 
-#toolbar {
-    margin: 0 0 30px 0;
+#user-menu-wrapper .user-menu > ul > li a {
+    border-right: 1px solid #dedede;
+    color: #000;
+    padding: 5px;
+}
+
+#user-menu-wrapper .user-menu > ul > li a:hover,
+#user-menu-wrapper .user-menu > ul > li a:active,
+#user-menu-wrapper .user-menu > ul > li a:focus {
+    background: #dedede;
+}
+
+#user-menu-wrapper .user-menu > ul > li a:last-child {
+    border: 0;
 }
 
 #cart .acc-btn {
@@ -504,6 +512,19 @@ a.acc-btn .glyphicon {
 
 .shareIcons li > a.share-googleplus:hover {
     background-position: -90px -180px;
+}
+
+#second-menu ul li a {
+    border: 0;
+    padding: 20px 15px;
+    color: #FFF;
+}
+
+#second-menu ul li a:hover,
+#second-menu ul li a:focus,
+#second-menu ul li a.active {
+    color: #FFF;
+    background: none;
 }
 
 /* Footer */
@@ -779,7 +800,7 @@ footer h3 {
 
 .product .badges {
     position: absolute;
-    top: 55px;
+    top: 10px;
     left: 10px;
 }
 
@@ -998,7 +1019,7 @@ footer h3 {
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     position: relative;
     margin: 15px 0;
-    padding: 10px 0 0 0;
+    padding: 0;
     overflow: hidden;
     border: 1px solid #dedede;
 }
@@ -1009,9 +1030,11 @@ footer h3 {
 }
 
 .owl-filter-product .product .name {
-    margin: 0;
-    padding: 15px 10px;
+    margin: 0 0 15px 0;
+    padding: 15px 10px 0 15px;
     position: relative;
+    height: 62px;
+    overflow: hidden;
 }
 
 .owl-filter-product .product .name a {
