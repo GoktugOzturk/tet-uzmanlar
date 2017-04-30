@@ -52,7 +52,7 @@ body {
 }
 
 #nav-container {
-    min-height: 70px;
+    min-height: 60px;
     margin-top: 30px;
 }
 
@@ -276,6 +276,7 @@ body {
 #header-nav-bar .navbar .dropdown-menu li a:hover {
     background-color: transparent;
     color: #34495e;
+    border-left:5px solid #dedede;
 }
 
 .drop-down-title {
@@ -307,13 +308,6 @@ li.cart .acc-btn {
     margin: 5px 0;
 }
 
-#header-nav-bar .navbar .dropdown-menu li a:hover {
-    background-color: transparent;
-    color: #34495e;
-    padding-left: 25px;
-    margin-right: 5px;
-}
-
 #header-nav-bar .navbar .dropdown-menu li a:hover:before {
     -webkit-transform: scale(1.5);
     -moz-transform: scale(1.5);
@@ -333,6 +327,7 @@ li.cart .acc-btn {
 /* Usermenu */
 header {
     margin-bottom: 15px;
+    background: #FFF;
 }
 
 #user-menu-wrapper .user-menu > ul > li {
