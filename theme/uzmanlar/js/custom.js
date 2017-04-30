@@ -14,7 +14,8 @@ $(function () {
     // navbar = $(document).find(".toggle");
     navbar = $("#header-nav-bar");
     if (navbar.length > 0) {
-        navbaroffset = defaultNavbar.offset().top;
+        //navbaroffset = defaultNavbar.offset().top;
+        navbaroffset = navbar.offset().top;
     }
     $(window).on('scroll resize', function () {
         if ($(window).scrollTop() > navbaroffset) {
