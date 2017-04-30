@@ -9,9 +9,10 @@ function initMobileMenu() {
 }
 $(function () {
     /* fixed Navbar */
-    defaultNavbar = $("#header-nav-bar");
-    navbard = $("#header-nav-bar").clone().addClass("toggle").insertBefore("#bodyWrapper");
-    navbar = $(document).find(".toggle");
+    // defaultNavbar = $("#header-nav-bar");
+    // navbard = $("#header-nav-bar").clone().addClass("toggle").insertBefore("#bodyWrapper");
+    // navbar = $(document).find(".toggle");
+    navbar = $("#header-nav-bar");
     if (navbar.length > 0) {
         navbaroffset = defaultNavbar.offset().top;
     }

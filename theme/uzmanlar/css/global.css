@@ -170,7 +170,6 @@ body {
     right: 0;
     top: 9px;
     z-index: 2;
-    margin-right: 30px;
 }
 
 #main-menu .navbar-nav {
@@ -209,6 +208,7 @@ body {
 
 #toolbar-wrapper {
     border-bottom: 1px solid #dedede;
+    margin-bottom: 30px;
 }
 
 /*
@@ -243,8 +243,7 @@ body {
 
 #header-nav-bar .navbar-nav {
     float: none !important;
-    margin-right: -15px;
-    margin-left: -15px;
+    margin: 0;
 }
 
 #header-nav-bar .navbar .dropdown-menu {
@@ -281,8 +280,6 @@ body {
     background: #FFF;
     padding: 15px;
     display: block;
-    margin-left: -15px;
-    margin-right: -15px;
     border-bottom: 1px solid #f2f2f2;
     font-weight: bold;
 }
@@ -365,8 +362,9 @@ header {
 
 #user-menu-wrapper .user-menu > ul > li a {
     border-right: 1px solid #dedede;
-    color: #000;
-    padding: 5px;
+    color: #333;
+    padding: 5px 10px;
+    font-size: 13px;
 }
 
 #user-menu-wrapper .user-menu > ul > li a:hover,
@@ -375,7 +373,7 @@ header {
     background: #dedede;
 }
 
-#user-menu-wrapper .user-menu > ul > li a:last-child {
+#user-menu-wrapper .user-menu > ul > li:last-child a {
     border: 0;
 }
 
@@ -520,9 +518,9 @@ a.acc-btn .glyphicon {
     color: #FFF;
 }
 
-#second-menu ul li a:hover,
-#second-menu ul li a:focus,
-#second-menu ul li a.active {
+#second-menu .nav > li > a:hover,
+#second-menu .nav > li > a:focus,
+#second-menu .nav > li > a.active {
     color: #FFF;
     background: none;
 }
@@ -1022,6 +1020,7 @@ footer h3 {
     padding: 0;
     overflow: hidden;
     border: 1px solid #dedede;
+    background: #FFF;
 }
 
 .owl-filter-product .product:hover, #categories .product:hover {
@@ -1047,8 +1046,6 @@ footer h3 {
 }
 
 .owl-filter-product .product .product-image {
-    -webkit-box-shadow: -4px 2px 5px -2px rgba(0, 0, 0, 0.16), -4px 2px 10px -3px rgba(0, 0, 0, 0.12);
-    box-shadow: -4px 2px 5px -2px rgba(0, 0, 0, 0.16), -4px 2px 10px -3px rgba(0, 0, 0, 0.12);
 }
 
 .owl-filter-product .product img {
@@ -1089,7 +1086,7 @@ footer h3 {
     right: 0;
     bottom: 0;
     padding: 20px;
-    background-color: #09A6D7;
+    background-color: #34495e;
     color: #FFF;
     font-weight: 700;
     -webkit-transition: all 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);

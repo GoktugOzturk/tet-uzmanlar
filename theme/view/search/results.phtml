@@ -78,10 +78,10 @@
                 <? foreach ($products as $key => $product) { ?>
                     <div class="product-wrapper col-md-4 col-sm-6 col-xs-12">
                         <div class="product <? (!$product->is_saleable ? "passiveProduct" : "") ?>">
-                            <h5 class="name"><a href="<?= $product->getUrl() ?>"><?= $product->full_name ?></a></h5>
                             <div class="product-image">
                                 <a href="<?= $product->getUrl() ?>"><img src="<?= $product->getPhoto("catalog") ?>"></a>
                             </div>
+                            <h5 class="name"><a href="<?= $product->getUrl() ?>"><?= $product->full_name ?></a></h5>
                             <div class="product-meta">
                                 <? if ($product->is_saleable) { ?>
                                     <? if ($product->getSalePrice() < $product->getBasePrice()) { ?>

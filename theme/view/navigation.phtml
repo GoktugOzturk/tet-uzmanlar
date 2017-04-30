@@ -9,36 +9,40 @@
         <div class="container">
             <div class="row">
                 <div class="static col-md-12">
-                    <div class="main-menu-wrapper col-md-3">
-                        <nav id="main-menu" class="navbar <?= (view::$menuOpenFirstLevel ? "active" : "") ?>">
-                            <a class="drop-down-title">ÜRÜN GRUPLARI</a>
-                            <ul class="nav navbar-nav">
-                                <? if (count($catalogs)) { ?>
-                                    <? foreach ($catalogs as $catalog) { ?>
-                                        <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
-                                            <li class="dropdown-opener">
-                                                <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?> <span
-                                                            class="glyphicon glyphicon-chevron-right"></span></a>
-                                                <ul class="dropdown-menu">
-                                                    <? foreach ($childCategories[$catalog['id']] as $category) { ?>
-                                                        <li>
-                                                            <a href="<?= $category['link'] ?>"><?= $category['name'] ?></a>
-                                                        </li>
-                                                    <? } ?>
-                                                </ul>
-                                            </li>
-                                        <? } else { ?>
-                                            <li>
-                                                <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
-                                            </li>
+                    <div class="row">
+                        <div class="main-menu-wrapper col-md-3">
+                            <nav id="main-menu" class="navbar <?= (view::$menuOpenFirstLevel ? "active" : "") ?>">
+                                <a class="drop-down-title">ÜRÜN GRUPLARI <span
+                                            class="glyphicon glyphicon-menu-hamburger pull-right"
+                                            aria-hidden="true"></span></a>
+                                <ul class="nav navbar-nav">
+                                    <? if (count($catalogs)) { ?>
+                                        <? foreach ($catalogs as $catalog) { ?>
+                                            <? if (isset($childCategories[$catalog['id']]) && count($childCategories[$catalog['id']])) { ?>
+                                                <li class="dropdown-opener">
+                                                    <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?> <span
+                                                                class="glyphicon glyphicon-chevron-right"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <? foreach ($childCategories[$catalog['id']] as $category) { ?>
+                                                            <li>
+                                                                <a href="<?= $category['link'] ?>"><?= $category['name'] ?></a>
+                                                            </li>
+                                                        <? } ?>
+                                                    </ul>
+                                                </li>
+                                            <? } else { ?>
+                                                <li>
+                                                    <a href="<?= $catalog['link'] ?>"><?= $catalog['name'] ?></a>
+                                                </li>
+                                            <? } ?>
                                         <? } ?>
                                     <? } ?>
-                                <? } ?>
-                            </ul>
-                        </nav>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-                    <nav id="second-menu" class="col-md-9">
-                        <ul>
+                    <nav id="second-menu" class="col-md-9 ">
+                        <ul class="nav navbar-nav">
                             <li><a href="#">İndirimli Ürünler</a></li>
                             <li><a href="#">En Yeni Ürünler</a></li>
                             <li><a href="#">Outlet</a></li>
