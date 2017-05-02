@@ -200,6 +200,7 @@ body {
 
 #main-menu .navbar-nav {
     display: none;
+    border: 1px solid #dedede;
 }
 
 #main-menu.active .navbar-nav {
@@ -276,7 +277,7 @@ body {
 #header-nav-bar .navbar .dropdown-menu li a:hover {
     background-color: transparent;
     color: #34495e;
-    border-left:5px solid #dedede;
+    border-left: 5px solid #dedede;
 }
 
 .drop-down-title {
@@ -1234,6 +1235,10 @@ footer h3 {
     border-radius: 100%;
     -webkit-box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .2), 0 6px 15px 0 rgba(0, 0, 0, .19);
     box-shadow: 0 4px 10px 0 rgba(0, 0, 0, .2), 0 6px 15px 0 rgba(0, 0, 0, .19);
+}
+
+.slider .owl-dots .owl-dot.active span {
+    background: #34495e;
 }
 
 .slider .owl-dots .owl-dot:last-child span {
