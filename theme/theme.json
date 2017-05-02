@@ -90,18 +90,18 @@
     "logos": {
       "logo": {
         "name": "Genel Site Logosu",
-        "width": 150,
-        "height": 140
+        "width": 260,
+        "height": 100
       },
       "logo2x": {
         "name": "Genel Site Logosu (2x)",
-        "width": 300,
-        "height": 280
+        "width": 520,
+        "height": 200
       },
       "fixedNav": {
         "name": "Sabit Navigasyonda Görünen Logo",
-        "width": 150,
-        "height": 49
+        "width": 130,
+        "height": 50
       },
       "fixedNav2x": {
         "name": "Sabit Navigasyonda Görünen Logo (2x)",
