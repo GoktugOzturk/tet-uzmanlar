@@ -36,7 +36,6 @@ body {
 
 #logo {
     display: block;
-    padding: 10px 0;
 }
 
 .nav-logo {
@@ -596,7 +595,7 @@ footer h3 {
 .footer-list ul > li > a:hover {
     background-color: inherit;
     text-decoration: none;
-    color: #34495e !important;
+    color: #68C5F9 !important;
 }
 
 .copyright {
@@ -635,6 +634,7 @@ footer h3 {
     display: none;
     position: fixed;
     z-index: 100;
+    top: 0;
     left: 0;
     right: 0;
 }
@@ -1129,6 +1129,11 @@ footer h3 {
     .owl-filter-product .owl-next {
         display: none;
     }
+
+    #nav-container {
+        min-height: 0;
+        margin-top: 0;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -1249,6 +1254,10 @@ footer h3 {
     background-color: #68c5f5;
 }
 
+.header-top-fix {
+    margin-top: 25px;
+}
+
 @media only screen and (max-width: 767px) {
     .widgetProductList .product-image,
     .widgetProductList .badges .badge,
@@ -1307,7 +1316,7 @@ footer h3 {
 
     #logo {
         display: inline-block;
-        margin: 60px 0 0 0;
+        margin: 10px 0 0 0;
     }
 
     #toolbar {
