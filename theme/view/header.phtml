@@ -1,8 +1,8 @@
 <?
 /**
- * @var string $themeDir
+ * @var string           $themeDir
  * @var category_model[] $catalogs
- * @var category_model $category
+ * @var category_model   $category
  */
 ?>
 <header class="mb15">
@@ -21,42 +21,28 @@
                 <div id="user-menu-wrapper" class="static col-md-12">
                     <nav class="pull-left user-menu">
                         <ul class="nav">
-                            <li><a href="#">Ana Sayfa</a></li>
-                            <li><a href="#">Sipariş Takibi</a></li>
-                            <li><a href="#">Müşteri Hizmetleri</a></li>
-                            <li><a href="#">İletişim</a></li>
+                            <li><a href="/">Ana Sayfa</a></li>
+                            <li><a href="/siparis-takip">Sipariş Takibi</a></li>
+                            <li><a href="/destek">Müşteri Hizmetleri</a></li>
+                            <li><a href="/iletisim">İletişim</a></li>
                         </ul>
                     </nav>
                     <nav class="user-menu pull-right">
                         <ul class="nav">
                             <? if (session::isMember()) { ?>
-                                <li class="dropdown"><a role="button" class="dropdown-toggle" href="javascript:"
-                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">Hesabım
-                                        [<?= mb_strtoupper(session::get("firstName")) ?>] <span
-                                                class="caret"></span> </a>
+                                <li class="dropdown"><a role="button" class="dropdown-toggle" href="javascript:" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Hesabım [<?= mb_strtoupper(session::get("firstName")) ?>] <span class="caret"></span> </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/account/details"><i class="glyphicon glyphicon-user"></i>
-                                                Kişisel Bilgilerim</a></li>
-                                        <li><a href="/account/addresses"><i
-                                                        class="glyphicon glyphicon-list-alt"></i> Adreslerim</a>
-                                        </li>
-                                        <li><a href="/account/shopping_checks"><i
-                                                        class="glyphicon glyphicon-tag"></i> Alışveriş Çeklerim</a>
-                                        </li>
+                                        <li><a href="/account/details"><i class="glyphicon glyphicon-user"></i> Kişisel Bilgilerim</a></li>
+                                        <li><a href="/account/addresses"><i class="glyphicon glyphicon-list-alt"></i> Adreslerim</a></li>
+                                        <li><a href="/account/shopping_checks"><i class="glyphicon glyphicon-tag"></i> Alışveriş Çeklerim</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="/siparis-takip"><i class="glyphicon glyphicon-ok"></i>
-                                                Siparişlerim</a></li>
-                                        <li><a href="/order/defectreturn"><i
-                                                        class="glyphicon glyphicon-refresh"></i> Arıza/İade
-                                                Bildirimi</a></li>
-                                        <li><a href="/support/tickets"><i class="glyphicon glyphicon-comment"></i>
-                                                Destek Taleplerim</a></li>
-                                        <li><a href="/support/request"><i class="glyphicon glyphicon-plus-sign"></i>
-                                                Yeni Talep Oluştur</a></li>
+                                        <li><a href="/siparis-takip"><i class="glyphicon glyphicon-ok"></i> Siparişlerim</a></li>
+                                        <li><a href="/order/defectreturn"><i class="glyphicon glyphicon-refresh"></i> Arıza/İade Bildirimi</a></li>
+                                        <li><a href="/support/tickets"><i class="glyphicon glyphicon-comment"></i> Destek Taleplerim</a></li>
+                                        <li><a href="/support/request"><i class="glyphicon glyphicon-plus-sign"></i> Yeni Talep Oluştur</a></li>
                                         <li role="separator" class="divider"></li>
-                                        <li><a href="/member/logout"><i class="glyphicon glyphicon-send"></i> Çıkış
-                                                Yap</a>
+                                        <li><a href="/member/logout"><i class="glyphicon glyphicon-send"></i> Çıkış Yap</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -77,16 +63,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 col-sm-12 col-xs-12 text-center">
-                <a href="/" id="logo"><img alt="<?= \TeknoETicaret\Config\Settings::get('site.name') ?>"
-                                           src="<?= view::getLogo('logo') ?>"
-                                           srcset="<?= view::getLogo('logo') ?> 1x, <?= view::getLogo('logo2x') ?> 2x"/></a>
+                <a href="/" id="logo"><img alt="<?= \TeknoETicaret\Config\Settings::get('site.name') ?>" src="<?= view::getLogo('logo') ?>"
+                            srcset="<?= view::getLogo('logo') ?> 1x, <?= view::getLogo('logo2x') ?> 2x"/></a>
             </div>
             <div class="col-md-7 col-sm-12 col-xs-12 header-top-fix">
                 <form id="search" action="/ara">
-                    <input type="text" name="q" placeholder="Ürün arayın..." id="searchQuery"
-                           class="form-control" autocomplete="on">
-                    <a href="javascript:;" class="btn btn-default"><span
-                                class="glyphicon glyphicon-search"></span></a>
+                    <input type="text" name="q" placeholder="Ürün arayın..." id="searchQuery" class="form-control" autocomplete="on">
+                    <a href="javascript:" onclick="$('form#search').submit()" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></a>
                 </form>
             </div>
             <div id="cart" class="col-md-2 col-sm-4 col-xs-3 header-top-fix">
