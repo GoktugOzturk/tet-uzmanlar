@@ -5,12 +5,12 @@ CSS Yazar - UI Tasarım: Eray Sayraç
 Portfolyo: http://www.eraysayrac.com
 */
 ::selection {
-    background: #34495e;
+    background: #34495E;
     color: #FFF;
 }
 
 ::-moz-selection {
-    background: #34495e;
+    background: #34495E;
     color: #FFF;
 }
 
@@ -67,7 +67,7 @@ body {
 #header-nav-bar.black-blue .nav > li > a:focus,
 #header-nav-bar.black-blue .nav > li > a:hover {
     color: #FFF;
-    background-color: #34495e;
+    background-color: #34495E;
 }
 
 #header-nav-bar.black-blue .navbar li ul li > a {
@@ -101,7 +101,7 @@ body {
 #header-nav-bar.black-blue .navbar-nav > li > a:hover,
 #header-nav-bar.black-blue .navbar-nav > li > a:focus,
 #header-nav-bar.black-blue .navbar-nav > li > a:active {
-    background-color: #34495e;
+    background-color: #34495E;
 }
 
 #header-nav-bar.black-blue .dropdown-menu li > a {
@@ -111,7 +111,7 @@ body {
 /* #nav-black# */
 /* nav-blue */
 #header-nav-bar.blue {
-    background-color: #34495e;
+    background-color: #34495E;
 }
 
 #header-nav-bar.blue .navbar li > a {
@@ -157,7 +157,7 @@ body {
 #header-nav-bar #main-menu li .dropdown-menu {
     top: 0;
     left: 100%;
-    background: #f9f9f9;
+    background: #F9F9F9;
 }
 
 #header-nav-bar .navbar {
@@ -180,7 +180,7 @@ body {
     font-weight: 400;
     font-size: 14px;
     color: #858585;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #DEDEDE;
     padding: 8px 15px 8px 10px;
     overflow: hidden;
     -webkit-transition: all 350ms cubic-bezier(.25, .46, .45, .94);
@@ -194,12 +194,12 @@ body {
 }
 
 #header-nav-bar .nav > li:hover a {
-    border-left: 5px solid #dedede;
+    border-left: 5px solid #DEDEDE;
 }
 
 #main-menu .navbar-nav {
     display: none;
-    border: 1px solid #dedede;
+    border: 1px solid #DEDEDE;
 }
 
 #main-menu.active .navbar-nav {
@@ -207,7 +207,7 @@ body {
 }
 
 #toolbar-wrapper {
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #DEDEDE;
     margin-bottom: 30px;
 }
 
@@ -238,7 +238,7 @@ body {
 */
 
 #header-nav-bar .navbar-nav > li > a:after {
-    background-color: #34495e;
+    background-color: #34495E;
 }
 
 #header-nav-bar .navbar-nav {
@@ -270,13 +270,13 @@ body {
     position: relative;
     padding: 8px 15px;
     border-left: 0;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #DEDEDE;
 }
 
 #header-nav-bar .navbar .dropdown-menu li a:hover {
     background-color: transparent;
-    color: #34495e;
-    border-left: 5px solid #dedede;
+    color: #34495E;
+    border-left: 5px solid #DEDEDE;
 }
 
 .drop-down-title {
@@ -285,7 +285,7 @@ body {
     background: #FFF;
     padding: 15px;
     display: block;
-    border-bottom: 1px solid #f2f2f2;
+    border-bottom: 1px solid #F2F2F2;
     font-weight: bold;
 }
 
@@ -335,7 +335,7 @@ header {
 }
 
 #user-menu-wrapper .user-menu > ul > li a {
-    border-right: 1px solid #dedede;
+    border-right: 1px solid #DEDEDE;
     color: #333;
     padding: 5px 10px;
     font-size: 13px;
@@ -344,7 +344,7 @@ header {
 #user-menu-wrapper .user-menu > ul > li a:hover,
 #user-menu-wrapper .user-menu > ul > li a:active,
 #user-menu-wrapper .user-menu > ul > li a:focus {
-    background: #dedede;
+    background: #DEDEDE;
 }
 
 #user-menu-wrapper .user-menu > ul > li:last-child a {
@@ -373,13 +373,13 @@ header {
 .badge.cartItems {
     margin-left: 10px;
     background-color: #FFF;
-    color: #34495e;
+    color: #34495E;
 }
 
 .acc-btn {
     margin: 10px 0;
     padding: 15px !important;
-    background-color: #34495e;
+    background-color: #34495E;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
@@ -402,7 +402,7 @@ a.acc-btn .glyphicon {
 .nav > li > a.acc-btn:focus,
 .nav > li > a.acc-btn:hover {
     color: #FFF !important;
-    background-color: #34495e !important;
+    background-color: #34495E !important;
 }
 
 #header-nav-bar .acc-btn {
@@ -509,7 +509,7 @@ a.acc-btn .glyphicon {
     padding: 30px;
     background-color: #FFF;
     font-weight: 500;
-    color: #34495e;
+    color: #34495E;
     border-radius: 5px;
     -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -602,7 +602,7 @@ footer h3 {
     font-size: 12px;
     padding-top: 10px;
     color: #FFF;
-    background: #34495e;
+    background: #34495E;
     text-align: center;
 }
 
@@ -654,11 +654,11 @@ footer h3 {
 .typeahead.dropdown-menu > .active > a,
 .typeahead.dropdown-menu > .active > a:focus,
 .typeahead.dropdown-menu > .active > a:hover {
-    background-color: #34495e;
+    background-color: #34495E;
 }
 
 .btn-primary {
-    background-color: #34495e;
+    background-color: #34495E;
     border: 0;
     -webkit-transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -995,7 +995,7 @@ footer h3 {
     margin: 15px 0;
     padding: 0;
     overflow: hidden;
-    border: 1px solid #dedede;
+    border: 1px solid #DEDEDE;
     background: #FFF;
 }
 
@@ -1062,7 +1062,7 @@ footer h3 {
     right: 0;
     bottom: 0;
     padding: 20px;
-    background-color: #34495e;
+    background-color: #34495E;
     color: #FFF;
     font-weight: 700;
     -webkit-transition: all 150ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -1084,7 +1084,7 @@ footer h3 {
 
 .filter-products-title {
     text-align: left;
-    background-color: #34495e;
+    background-color: #34495E;
     padding: 15px;
     font-size: 15px;
     font-weight: 700;
@@ -1243,7 +1243,7 @@ footer h3 {
 }
 
 .slider .owl-dots .owl-dot.active span {
-    background: #34495e;
+    background: #34495E;
 }
 
 .slider .owl-dots .owl-dot:last-child span {
@@ -1251,11 +1251,19 @@ footer h3 {
 }
 
 .navbar-fixed-top .cart .acc-btn {
-    background-color: #68c5f5;
+    background-color: #68C5F5;
 }
 
 .header-top-fix {
     margin-top: 25px;
+}
+
+.widgetBrandList label {
+    font-weight: normal;
+}
+
+.widgetBrandList p {
+    margin: 10px 0 0;
 }
 
 @media only screen and (max-width: 767px) {
@@ -1396,7 +1404,7 @@ footer h3 {
     }
 
     #mobile-menu-buttons .nav.nav-pills > li a.active {
-        background: #34495e;
+        background: #34495E;
         border-radius: 0;
     }
 

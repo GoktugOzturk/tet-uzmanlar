@@ -1,0 +1,31 @@
+<?
+/**
+ * @var string $title
+ * @var array  $brands
+ */
+?>
+<div class="widget widgetBrandList">
+    <table class="table table-bordered">
+        <? if (!empty($title)) { ?>
+            <thead>
+            <tr>
+                <th><?= $title ?></th>
+            </tr>
+            </thead>
+        <? } ?>
+        <tbody>
+        <tr>
+            <td>
+                <label for="brandSelector">Aradığınız marka'nın ürünlerine daha hızlı ulaşabilmek için listeden seçiniz.</label>
+                <select id="brandSelector" onchange="window.location.href=$(this).val()" class="form-control">
+                    <option value="" selected>Seçiniz</option>
+                    <? foreach ($brands as $slug => $name) { ?>
+                        <option value="<?= $slug ?>"><?= $name ?></option>
+                    <? } ?>
+                </select>
+                <p class="text-center"><a href="/markalar">Tüm Markalar</a></p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
