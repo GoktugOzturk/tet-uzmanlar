@@ -165,7 +165,7 @@ body {
     border: 0;
     position: absolute;
     left: 15px;
-    right: 0;
+    right: 15px;
     top: 9px;
     z-index: 1000;
 }
