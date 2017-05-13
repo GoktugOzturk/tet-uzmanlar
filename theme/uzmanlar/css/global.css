@@ -1121,6 +1121,49 @@ footer h3 {
     color: #09A6D7;
 }
 
+/* blog-page */
+#blog-post-single {
+    background: #FFF;
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 30px;
+}
+
+#blog-post-single .post-meta {
+    border-bottom: 1px solid #34495E;
+    font-size: 12px;
+}
+
+#blog-post-single .show-comments a {
+    color: #34495E;
+}
+
+#blog-post-single .entry-content {
+    padding: 15px 0 20px;
+}
+
+#blog-post-single .content {
+    padding: 0;
+}
+
+#blog-post-single .content li {
+    list-style-type: none;
+}
+
+#blog-sidebar .widget a {
+    color: #34495E;
+}
+
+#blog-sidebar {
+    border-left: 1px solid #dedede;
+}
+
+#blog-sidebar .widget .tag-cloud a:hover {
+    background-color: #34495E;
+}
+
+/* #blog-page# */
+
 /* #products-filter# */
 @media only screen and (max-width: 992px) {
     .owl-brand-carousel .owl-prev,
