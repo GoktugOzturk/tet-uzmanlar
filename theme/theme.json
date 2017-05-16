@@ -46,6 +46,14 @@
         "limit": 1,
         "sort_by": "Random"
       },
+      "NavigationPills": {
+        "description": "Menü'de hap gibi görünen düğmeler",
+        "group": "Global",
+        "type": "Link",
+        "limit": 4,
+        "sort_by": "Order",
+        "global": 1
+      },
       "CategoryTop": {
         "description": "Kategori sayfalarında menüden sonra görünen banner",
         "group": "Category",
