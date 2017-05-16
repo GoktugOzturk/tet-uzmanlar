@@ -15,7 +15,7 @@
         "group": "Home",
         "type": "Banner",
         "width": 848,
-	"height": 408,
+	"height": 393,
         "limit": 10,
         "sort_by": "Order"
       },
