@@ -26,7 +26,7 @@ aside nav li > a.active,
 aside nav li > a:focus,
 aside nav li > a:hover {
     text-decoration: none !important;
-    background-color: #1AABE4 !important;
+    background-color: #34495E !important;
     color: #FFF;
     padding-left: 10px;
 }

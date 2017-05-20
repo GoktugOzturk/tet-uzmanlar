@@ -22,7 +22,7 @@
                     <nav class="pull-left user-menu">
                         <ul class="nav">
                             <li><a href="/">Ana Sayfa</a></li>
-                            <li><a href="/siparis-takip">Sipariş Takibi</a></li>
+                            <li><a role="button" class="login-required" href="/siparis-takip">Sipariş Takibi</a></li>
                             <li><a href="/destek">Müşteri Hizmetleri</a></li>
                             <li><a href="/iletisim">İletişim</a></li>
                         </ul>
@@ -45,13 +45,9 @@
                                         <li><a href="/member/logout"><i class="glyphicon glyphicon-send"></i> Çıkış Yap</a></li>
                                     </ul>
                                 </li>
-                                <li><a role="button" href="/siparis-takip">Sipariş Takip</a></li>
-                                <li><a role="button" href="/iletisim">İletişim</a></li>
                             <? } else { ?>
                                 <li><a role="button" class="signup-required" href="javascript:">Üye Ol</a></li>
                                 <li><a role="button" class="login-required" href="javascript:">Giriş Yap</a></li>
-                                <li><a role="button" class="login-required" href="/siparis-takip">Sipariş Takip</a></li>
-                                <li><a role="button" href="/iletisim">İletişim</a></li>
                             <? } ?>
                         </ul>
                     </nav>
