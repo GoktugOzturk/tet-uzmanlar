@@ -42,11 +42,15 @@
             <!-- #thumbnails# -->
             <div class="col-md-10">
                 <div class="productImages">
-                    <? foreach ($productPhotos as $key => $photo) { ?>
-                        <img id="activeImage" src="<?= $photo['normal'] ?>" data-zoom-image="<?= $photo['big'] ?>"/>
-                        <? break; ?>
+                    <? if (count($productPhotos)) { ?>
+                        <? foreach ($productPhotos as $key => $photo) { ?>
+                            <img id="activeImage" src="<?= $photo['normal'] ?>" data-zoom-image="<?= $photo['big'] ?>"/>
+                            <? break; ?>
+                        <? } ?>
+                    <? } else { ?>
+                        <img id="activeImage" src="<?= $obProduct->getPhoto("normal") ?>"/>
                     <? } ?>
-                    <script>
+                    <script type="text/javascript">
                         $(function () {
                             function initEZPlus() {
                                 while ($('.zoomWrapper #activeImage').length > 0) {
@@ -117,7 +121,7 @@
                                 if (data.readonly) {
                                     $('.productRating').raty({readOnly: true, score: <?= $rating->getScore() ?>});
                                 }
-                                if (typeof data.message != "undefined") {
+                                if (typeof data.message !== "undefined") {
                                     alert(data.message);
                                 }
                             });
@@ -210,18 +214,18 @@
                 </div>
                 <div class="clearfix">
                     <div class="product-piece">
-                        <a href="javascript:;" onclick="quantity('#productQuantity','down')">-</a>
+                        <a href="javascript:" onclick="quantity('#productQuantity','down')">-</a>
                         <div>
                             <input name="quantity" id="productQuantity" class="text-center" value="1" type="text" min="1" max="<?= $obProduct->saleableProductCount() ?>"
                                     onblur="quantity($(this))">
                             <label for="productQuantity">ADET</label>
                         </div>
-                        <a href="javascript:;" onclick="quantity('#productQuantity','up')">+</a>
+                        <a href="javascript:" onclick="quantity('#productQuantity','up')">+</a>
                     </div>
                     <input type="hidden" id="productId" value="<?= $obProduct->product_id ?>"/>
                     <input type="hidden" id="variantType" value="<?= $obProduct->variant_type ?>"/>
                     <input type="hidden" id="fromSource" value="<?= (isset($_GET['from']) ? $_GET['from'] : '') ?>"/>
-                    <a href="javascript:;" class="gotoBasket acc-btn" onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
+                    <a href="javascript:" class="gotoBasket acc-btn" onclick="addToCart($('#productId').val(), $('#productQuantity').val(), $('#fromSource').val());">
                         <span class="glyphicon glyphicon-shopping-cart"></span>SEPETE EKLE
                     </a>
                 </div>

@@ -1,0 +1,23 @@
+<?
+/**
+ * @var int           $id
+ * @var string        $title
+ * @var \ob_product[] $products
+ * @var ob_category   $category
+ */
+?>
+<div class="widgetProductList2">
+    <div class="filter-products-title"><?= $title ?></div>
+    <div class="row owl-filter-product">
+        <? foreach ($products as $key => $obProduct) { ?>
+            <? $product = new product_item($obProduct); ?>
+            <div class="col-md-3 col-xs-6 item">
+                <div class="product-list">
+                    <div class="product-wrapper">
+                        <?= $product->generate() ?>
+                    </div>
+                </div>
+            </div>
+        <? } ?>
+    </div>
+</div>

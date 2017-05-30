@@ -92,6 +92,8 @@
                                                 class="glyphicon glyphicon-shopping-cart"></span></a>
                                 <? } elseif (\TeknoETicaret\Config\Settings::get('product.notsaleable.showprice') == 1) { ?>
                                     <span class="price"><?= icms::format_money($product->getSalePrice()) ?></span>
+                                <? } else { ?>
+                                    <div class="well well-sm text-center">Geçici olarak temin edilemiyor.</div>
                                 <? } ?>
                             </div>
                             <div class="badges">

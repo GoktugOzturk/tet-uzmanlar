@@ -13,21 +13,43 @@
                 <div class="product-list">
                     <div class="product-wrapper">
                         <?= $product->generate() ?>
-                    </div><!-- #product-wrapper# -->
-                </div><!-- #product-list# -->
-            </div><!-- #item# -->
+                    </div>
+                </div>
+            </div>
         <? } ?>
     </div>
 </div>
 <script>
     $(document).ready(function () {
         $('#<?=$id?> .owl-carousel').owlCarousel({
-            responsiveClass: true,
+            items: 6,
+            lazyLoad: true,
+            loop: true,
+            margin: 0,
             nav: true,
+            dots: false,
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            responsiveClass: true,
+            responsiveBaseElement: '#<?=$id?>',
             responsive: {
-                0: {items: 1, nav: false},
-                481: {items: 3},
-                993: {items: 4}
+                0: {
+                    items: 1,
+                    nav: false
+                },
+                320: {
+                    items: 2
+                },
+                550: {
+                    items: 3
+                },
+                768: {
+                    items: 4
+                },
+                992: {
+                    items: 6
+                }
             },
             slideSpeed: 300,
             paginationSpeed: 400,
