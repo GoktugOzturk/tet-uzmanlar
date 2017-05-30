@@ -15,16 +15,15 @@
         "group": "Home",
         "type": "Banner",
         "width": 848,
-	"height": 393,
+        "height": 393,
         "limit": 10,
         "sort_by": "Order"
       },
       "HomePageLeftDouble": {
-        "description": "Anasayfada soldaki alt alta iki banner",
+        "description": "Anasayfada soldaki alt alta üç banner",
         "group": "Home",
         "type": "Banner",
         "width": 263,
-        "height": 130,
         "limit": 3,
         "sort_by": "Order"
       },
