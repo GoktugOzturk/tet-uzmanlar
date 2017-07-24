@@ -1309,6 +1309,10 @@ footer h3 {
     margin: 10px 0 0;
 }
 
+.mm-opened #toolbar {
+    margin: 0;
+}
+
 @media only screen and (max-width: 767px) {
     .widgetProductList .product-image,
     .widgetProductList .badges .badge,
