@@ -345,7 +345,7 @@
     }
 
     .product-title {
-        margin-top: 15px;
+        margin-top: 50px;
     }
 
     .xscenter {
@@ -361,6 +361,19 @@
         margin-top: 15px;
         display: inline-block;
         float: none;
+    }
+
+    .shareIcons {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .shareIcons li {
+        float: none;
+        display: inline-block;
     }
 
 }
